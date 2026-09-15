@@ -6,8 +6,34 @@ metadata:
   name: open5gs-sample
   namespace: open5gs
 spec:
-  # Enable Prometheus ServiceMonitors for CNF metrics
-  serviceMonitor: true
+  # Enable Prometheus ServiceMonitors for CNF metrics (set per network function;
+  # there is no top-level spec.serviceMonitor field in the CRD)
+  amf:
+    serviceMonitor: true
+  ausf:
+    serviceMonitor: true
+  bsf:
+    serviceMonitor: true
+  nrf:
+    serviceMonitor: true
+  nssf:
+    serviceMonitor: true
+  pcf:
+    serviceMonitor: true
+  scp:
+    serviceMonitor: true
+  smf:
+    serviceMonitor: true
+  udm:
+    serviceMonitor: true
+  udr:
+    serviceMonitor: true
+  upf:
+    serviceMonitor: true
+  webui:
+    serviceMonitor: true
+  mongoDB:
+    serviceMonitor: true
   configuration:
     mcc: "999"
     mnc: "70"
