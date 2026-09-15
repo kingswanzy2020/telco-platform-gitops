@@ -21,3 +21,5 @@ spec:
     slices:
       - sst: "1"
         sd: "0x111111"
+      - sst: "2"
+        sd: "0x222222"
