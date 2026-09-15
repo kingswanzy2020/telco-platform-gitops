@@ -1,0 +1,8 @@
+# Kustomization for the local Docker Desktop Kubernetes environment
+# References base resources for local deployment
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base/open5gs-operator/helmrelease.yaml
+  - ../../base/open5gs-cr/open5gs-sample.yaml
+  - ../../base/observability/kube-prometheus-stack-values.yaml

@@ -1,0 +1,19 @@
+# ArgoCD Application for the Open5GS Custom Resource
+# Points at the base/open5gs-cr directory in this repo
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: open5gs-cr
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/YOURUSER/telco-gitops.git
+    targetRevision: HEAD
+    path: base/open5gs-cr
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: open5gs
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

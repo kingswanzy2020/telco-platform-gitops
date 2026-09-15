@@ -1,0 +1,17 @@
+# Open5GS Custom Resource - defines the 5G Core deployment
+# The Operator reads this CR and spins up all network functions
+apiVersion: net.gradiant.org/v1
+kind: Open5GS
+metadata:
+  name: open5gs-sample
+  namespace: open5gs
+spec:
+  # Enable Prometheus ServiceMonitors for CNF metrics
+  serviceMonitor: true
+  configuration:
+    mcc: "999"
+    mnc: "70"
+    tac: "0001"
+    slices:
+      - sst: "1"
+        sd: "0x111111"

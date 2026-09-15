@@ -1,0 +1,11 @@
+# Helm values for kube-prometheus-stack
+# Enables Grafana and ServiceMonitor CRDs for CNF metrics scraping
+prometheus:
+  prometheusSpec:
+    serviceMonitorSelectorNilUsesHelmValues: false
+grafana:
+  enabled: true
+  service:
+    type: ClusterIP
+defaultRules:
+  create: true

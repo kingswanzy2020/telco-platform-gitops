@@ -1,0 +1,33 @@
+# ArgoCD Application for the observability stack
+# Deploys kube-prometheus-stack with ServiceMonitor CRDs
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: observability
+  namespace: argocd
+spec:
+  project: default
+  source:
+    chart: kube-prometheus-stack
+    repoURL: https://prometheus-community.github.io/helm-charts
+    targetRevision: "*"
+    helm:
+      releaseName: kube-prometheus-stack
+      valueFiles: []
+      valuesObject:
+        prometheus:
+          prometheusSpec:
+            serviceMonitorSelectorNilUsesHelmValues: false
+        grafana:
+          enabled: true
+          service:
+            type: ClusterIP
+        defaultRules:
+          create: true
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: monitoring
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
