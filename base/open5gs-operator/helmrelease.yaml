@@ -13,6 +13,12 @@ spec:
     targetRevision: "1.0.5"
     helm:
       releaseName: open5gs-operator
+      values: |
+        controllerManager:
+          kubeRbacProxy:
+            image:
+              repository: quay.io/brancz/kube-rbac-proxy
+              tag: v0.18.1
   destination:
     server: "https://kubernetes.default.svc"
     namespace: open5gs
