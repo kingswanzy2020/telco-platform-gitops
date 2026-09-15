@@ -10,15 +10,9 @@ spec:
   source:
     chart: open5gs-operator
     repoURL: registry-1.docker.io/gradiantcharts
-    targetRevision: "1.0.5"
+    targetRevision: "1.0.7"
     helm:
       releaseName: open5gs-operator
-      values: |
-        controllerManager:
-          kubeRbacProxy:
-            image:
-              repository: quay.io/brancz/kube-rbac-proxy
-              tag: v0.18.1
   destination:
     server: "https://kubernetes.default.svc"
     namespace: open5gs

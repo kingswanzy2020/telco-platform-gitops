@@ -8,9 +8,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/YOURUSER/telco-gitops.git
+    repoURL: https://github.com/kingswanzy2020/telco-platform-gitops.git
     targetRevision: HEAD
-    path: base/open5gs-cr
+    path: overlays/local
   destination:
     server: "https://kubernetes.default.svc"
     namespace: open5gs
