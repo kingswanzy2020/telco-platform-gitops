@@ -1,0 +1,20 @@
+apiVersion: net.gradiant.org/v1
+kind: Open5GSUser
+metadata:
+  name: open5gs-user-sample
+  namespace: open5gs
+spec:
+  # IMSI uniquely identifies this subscriber on the network
+  imsi: "999700000000001"
+  # Authentication keys for the subscriber
+  key: "465B5CE8B199B49FAA5F0A2EE238A6BC"
+  opc: "E8ED289DEBA952E4283B54E88E6183CA"
+  # Assign to the second network slice
+  sst: "2"
+  sd: "0x222222"
+  # Access point name for data connectivity
+  apn: "internet"
+  # Reference to the Open5GS deployment this subscriber belongs to
+  open5gs:
+    name: "open5gs-sample"
+    namespace: "open5gs"

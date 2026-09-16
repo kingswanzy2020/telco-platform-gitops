@@ -1,0 +1,5 @@
+# Reusable base for the Open5GS Custom Resource
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - open5gs-user-sample.yaml
