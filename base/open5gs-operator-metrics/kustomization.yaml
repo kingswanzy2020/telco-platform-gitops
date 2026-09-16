@@ -1,0 +1,7 @@
+# Reusable base wiring Prometheus up to scrape the Open5GS operator's
+# own controller-runtime metrics
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - servicemonitor.yaml
+  - clusterrolebinding.yaml

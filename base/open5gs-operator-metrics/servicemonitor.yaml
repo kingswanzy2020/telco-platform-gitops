@@ -1,0 +1,26 @@
+# Scrapes the Open5GS operator's own controller-runtime metrics
+# (controller_runtime_reconcile_total etc.) so reconciliation activity
+# can be tracked directly instead of inferred from pod restart counts.
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: open5gs-operator-controller-manager
+  namespace: open5gs
+spec:
+  namespaceSelector:
+    matchNames:
+      - open5gs
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: open5gs-operator
+      app.kubernetes.io/name: open5gs-operator
+      control-plane: controller-manager
+  endpoints:
+    - port: https
+      scheme: https
+      # The metrics port is fronted by kube-rbac-proxy with a self-signed
+      # cert; auth is via bearer token checked against the ClusterRole
+      # granted in clusterrolebinding.yaml.
+      bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+      tlsConfig:
+        insecureSkipVerify: true

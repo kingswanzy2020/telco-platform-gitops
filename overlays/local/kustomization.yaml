@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ../../base/open5gs-cr
   - ../../base/open5gs-subscribers
+  - ../../base/open5gs-operator-metrics
 labels:
   - pairs:
       environment: local
